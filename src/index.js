@@ -1,15 +1,17 @@
 let bg;
+let corgiImg;
 let corgi;
 
 
 function preload(){
     bg = loadImage('../images/inside palace.jpeg');
-    corgi = loadImage('../images/palaceCorgi.png');
+    corgiImg = loadImage('../images/palaceCorgi.png');
 };
 
 function setup(){
     const canvas = createCanvas(1600, 850);
     canvas.parent('game-room');
+    corgi = new Dog(0, 0, 50, 50)
    
 
 }
@@ -37,9 +39,24 @@ class GameObject{
 }; 
 
 
+class Dog extends GameObject{
+    constructor(x, y, width, height){
+        super(x, y, width, height);
+        this.x = x;
+        this.y = y;
+    }
+
+    draw(){
+        image(corgiImg, this.x, this.y, width, height);
+    }
+};
+
+
+
 
 
 
 function draw(){
     background(bg)
+    corgi.draw();
 }
