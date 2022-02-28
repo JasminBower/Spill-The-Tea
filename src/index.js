@@ -15,6 +15,7 @@ function setup(){
     const canvas = createCanvas(1600, 700);
     canvas.parent('game-room');
     corgi = new Dog(560, 520, 125, 125);
+    teacup = new Tea(0, 0, 100, 100)
 
    
 
@@ -61,6 +62,16 @@ class Dog extends GameObject{
     };
 };
 
+class Tea extends GameObject{
+    constructor(x, y, width, height){
+        super(x, y, width, height)
+    }
+
+    draw(){
+       image(teacupImg, this.x, this.y, this.width, this.height);
+    };
+}
+
 
 
 
@@ -69,6 +80,7 @@ class Dog extends GameObject{
 function draw(){
     background(bg)
     corgi.draw();
+    teacup.draw();
      if(keyIsDown(LEFT_ARROW)){
    corgi.moveX(-10)
  } else if(keyIsDown(RIGHT_ARROW)){
