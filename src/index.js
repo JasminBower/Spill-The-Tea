@@ -3,6 +3,10 @@ let corgiImg;
 let corgi;
 let teacup;
 let teacupImg;
+let teacupHeight = 100;
+let teacupWidth = 100;
+
+let teacupArray = [{x: 100, y: 100}, {x: 500, y: 5}, {x: 120, y: 5}, {x: 600, y: 7}];
 
 
 
@@ -13,7 +17,7 @@ const gameOverScreen = document.querySelector('#game-over-screen');
 
 const startBtn = document.querySelector('#start-btn');
 const gameOverBtn = document.querySelector('#game-over-btn');
-const restartBtn = document.querySelector('#restart-btn')
+const restartBtn = document.querySelector('#restart-btn');
 
 function preload(){
     bg = loadImage('../images/inside palace.jpeg');
@@ -24,16 +28,16 @@ function preload(){
 
 function setup(){
     const canvas = createCanvas(1600, 700);
-    canvas.parent('game-screen');
+    //canvas.parent('game-screen');
     corgi = new Dog(560, 520, 125, 125);
-    teacup = new Tea(0, 0, 100, 100)
+    teacup = new Tea(0, 0, teacupHeight, teacupWidth)
 
 };
 
 function draw(){
     background(bg)
     corgi.draw();
-    teacup.draw();
+    rainTeacups();
      if(keyIsDown(LEFT_ARROW)){
    corgi.moveX(-10)
  } else if(keyIsDown(RIGHT_ARROW)){
@@ -98,7 +102,13 @@ class Tea extends GameObject{
 
 
 
-function gameStatus() {
+function rainTeacups() {
+teacupArray.forEach(cup => {
+    console.log(cup, 'cup')
+    let teapot = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
+    console.log(teapot)
+    teapot.draw()
+})
   
 };
 
@@ -115,6 +125,7 @@ function gameStatus() {
            splashScreen.style.display = 'none';
             gameScreen.style.display = 'flex';
             gameOverScreen.style.display = 'none';
+            rainTeacups()
         });
 
         gameOverBtn.addEventListener('click', () => {
