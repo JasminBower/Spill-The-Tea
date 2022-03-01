@@ -11,7 +11,9 @@ const gameScreen = document.querySelector('#game-screen');
 const gameOverScreen = document.querySelector('#game-over-screen');
 
 
-const startBtn = document.querySelector('#start-btn')
+const startBtn = document.querySelector('#start-btn');
+const gameOverBtn = document.querySelector('#game-over-btn');
+const restartBtn = document.querySelector('#restart-btn')
 
 function preload(){
     bg = loadImage('../images/inside palace.jpeg');
@@ -112,7 +114,22 @@ function gameStatus() {
             console.log('am I clicking?')
            splashScreen.style.display = 'none';
             gameScreen.style.display = 'flex';
-            //gameOverScreen.style.display = 'none';
+            gameOverScreen.style.display = 'none';
+        });
+
+        gameOverBtn.addEventListener('click', () => {
+            console.log('I lost the game boohoo')
+            splashScreen.style.display = 'none';
+            gameScreen.style.display = 'none';
+            gameOverScreen.style.display = 'flex';
+
+        });
+
+        restartBtn.addEventListener('click', () => {
+            console.log('agaiannnnnnnn')
+            splashScreen.style.display = 'flex';
+            gameScreen.style.display = 'none';
+            gameOverScreen.style.display = 'none';
         })
     })
 
