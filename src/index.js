@@ -6,9 +6,9 @@ let teacupImg;
 let teacupHeight = 100;
 let teacupWidth = 100;
 let cuthbertLives = 5;
-let y = 1;
 
-let teacupArray = [{x: 100, y: 0}, {x: 400, y: 0}, {x: 700, y: 0}, {x: 1000, y: 0}];
+
+let teacupArray = [{x: 100, y: 600}, {x: 400, y: 200}, {x: 700, y: 500}, {x: 1000, y: 1800}];
 
 
 
@@ -32,43 +32,29 @@ function setup(){
     const canvas = createCanvas(1600, 700);
     //canvas.parent('game-screen');
     corgi = new Dog(560, 520, 125, 125);
-    teacup = new Tea(0, 0, teacupHeight, teacupWidth)
+    //teacup = new Tea(0, 0, teacupHeight, teacupWidth)
 
 };
 
 function draw(){
     background(bg)
     corgi.draw();
-    //rainTeacups();
 
 teacupArray.forEach(cup => {
-    let teapot = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
-    teapot.draw();
+    let teacup = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
+    teacup.draw();
 
       if(cup.y >= 0){
-        cup.y += 2
-        console.log(cup.y)
+        cup.y += 1
     } 
     
-    if (cup.y >= 660){
+    if (cup.y >= 800){
         console.log(cup.y, 'am I here')
        cup.y = 0;
     }
 });
 
 
-  
-
-  //  teacup.draw()
-    // if(y > 0){
-    //     teacup.y += 2
-    //     console.log(teacup.y)
-    // } 
-    
-    // if (teacup.y >= 660){
-    //     console.log(teacup.y, 'am I here')
-    //    teacup.y = 0;
-    // }
 
     
     
@@ -124,17 +110,6 @@ class Tea extends GameObject{
 }
 
 
-
-// function rainTeacups() {
-// teacupArray.forEach(cup => {
-//     ///console.log(cup, 'cup')
-//     let teapot = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
-//     teapot.draw();
-//     teapot.y += 10;
-// })
-  
-// };
-
   window.addEventListener('load', () => {
       console.log('in load');
     
@@ -144,7 +119,6 @@ class Tea extends GameObject{
            splashScreen.style.display = 'none';
             gameScreen.style.display = 'flex';
             gameOverScreen.style.display = 'none';
-            //rainTeacups()
         });
 
         gameOverBtn.addEventListener('click', () => {
