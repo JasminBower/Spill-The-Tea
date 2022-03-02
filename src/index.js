@@ -5,8 +5,10 @@ let teacup;
 let teacupImg;
 let teacupHeight = 100;
 let teacupWidth = 100;
+let cuthbertLives = 5;
+let y = 1;
 
-let teacupArray = [{x: 100, y: 100}, {x: 500, y: 5}, {x: 120, y: 5}, {x: 600, y: 7}];
+let teacupArray = [{x: 100, y: 0}, {x: 400, y: 0}, {x: 700, y: 0}, {x: 1000, y: 0}];
 
 
 
@@ -38,6 +40,12 @@ function draw(){
     background(bg)
     corgi.draw();
     rainTeacups();
+
+    teacup.draw()
+    if(y > 0){
+        teacup.y += 2
+    }
+
      if(keyIsDown(LEFT_ARROW)){
    corgi.moveX(-10)
  } else if(keyIsDown(RIGHT_ARROW)){
@@ -104,10 +112,10 @@ class Tea extends GameObject{
 
 function rainTeacups() {
 teacupArray.forEach(cup => {
-    console.log(cup, 'cup')
+    ///console.log(cup, 'cup')
     let teapot = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
-    console.log(teapot)
-    teapot.draw()
+    teapot.draw();
+    teapot.y += 10;
 })
   
 };
@@ -115,9 +123,9 @@ teacupArray.forEach(cup => {
   window.addEventListener('load', () => {
       console.log('in load');
          //noCanvas()
-         splashScreen.style.display = 'flex';
-         gameScreen.style.display = 'none';
-         gameOverScreen.style.display = 'none';
+        //  splashScreen.style.display = 'flex';
+        //  gameScreen.style.display = 'none';
+        //  gameOverScreen.style.display = 'none';
 
    
         startBtn.addEventListener('click', () => {
