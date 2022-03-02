@@ -44,6 +44,12 @@ function draw(){
     teacup.draw()
     if(y > 0){
         teacup.y += 2
+        console.log(teacup.y)
+    } 
+    
+    if (teacup.y >= 660){
+        console.log(teacup.y, 'am I here')
+       teacup.y = 0;
     }
 
      if(keyIsDown(LEFT_ARROW)){
