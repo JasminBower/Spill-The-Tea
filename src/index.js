@@ -39,6 +39,13 @@ function setup(){
 function draw(){
     background(bg)
     corgi.draw();
+    if(teacupArray.length === 0){
+       teacupArray[0] = {x: 100, y: 600, teacupHeight, teacupWidth};
+       teacupArray[1] = {x: 700, y: 1000, teacupHeight, teacupWidth};
+       teacupArray[2] = {x: 200, y: 900, teacupHeight, teacupWidth};
+       teacupArray[3] = {x: 1050, y: 1500, teacupHeight, teacupWidth};
+       teacupArray[4] = {x: 150, y: 500, teacupHeight, teacupWidth};
+    } 
 
 teacupArray.forEach((cup, i )=> {
     let teacup = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
