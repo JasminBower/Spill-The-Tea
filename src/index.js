@@ -40,7 +40,7 @@ function draw(){
     background(bg)
     corgi.draw();
 
-teacupArray.forEach(cup => {
+teacupArray.forEach((cup, i )=> {
     let teacup = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
     teacup.draw();
 
@@ -58,8 +58,19 @@ teacupArray.forEach(cup => {
 //console.log(cup, '<<<< cheese')
 if((corgi.x + corgi.width >= cup.x && corgi.x <= cup.x + cup.teacupWidth) && 
 (corgi.y + corgi.width >= cup.y && corgi.y <= cup.y + cup.teacupHeight) && (corgi.x + corgi.width + corgi.height >= cup.x && corgi.x + corgi.width + corgi.height >= cup.x + cup.teacupHeight)){
-    console.log('ouch')
-} else console.log('chesse')
+    
+    teacupArray.splice(i, 1)
+if(cuthbertLives > 0){
+    console.log('oops')
+    cuthbertLives--
+    console.log(cuthbertLives)
+
+} else console.log('game-over-boo')
+    //let toop = teacupArray.slice(i, 1);
+      ///console.log(toop, 'peep')
+} 
+
+
 });
 
 
