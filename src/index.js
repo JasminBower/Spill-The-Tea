@@ -8,7 +8,7 @@ let teacupWidth = 100;
 let cuthbertLives = 5;
 
 
-let teacupArray = [{x: 100, y: 600}, {x: 400, y: 200}, {x: 700, y: 500}, {x: 1000, y: 1800}];
+let teacupArray = [{x: 100, y: 600, teacupHeight, teacupWidth}, {x: 400, y: 200, teacupHeight, teacupWidth}, {x: 700, y: 500, teacupHeight, teacupWidth}, {x: 1000, y: 1800, teacupHeight, teacupWidth}];
 
 
 
@@ -46,13 +46,22 @@ teacupArray.forEach(cup => {
 
       if(cup.y >= 0){
         cup.y += 1
+        //console.log('hii')
     } 
     
     if (cup.y >= 800){
-        console.log(cup.y, 'am I here')
+        //console.log(cup.y, 'am I here')
        cup.y = 0;
-    }
+    };
+
+    // collisions with cuthburt 
+//console.log(cup, '<<<< cheese')
+if((corgi.x + corgi.width >= cup.x && corgi.x <= cup.x + cup.teacupWidth) && 
+(corgi.y + corgi.width >= cup.y && corgi.y <= cup.y + cup.teacupHeight) && (corgi.x + corgi.width + corgi.height >= cup.x && corgi.x + corgi.width + corgi.height >= cup.x + cup.teacupHeight)){
+    console.log('ouch')
+} else console.log('chesse')
 });
+
 
 
 
