@@ -8,7 +8,7 @@ let teacupWidth = 100;
 let cuthbertLives = 5;
 
 
-let teacupArray = [{x: 100, y: 600, teacupHeight, teacupWidth}, {x: 400, y: 200, teacupHeight, teacupWidth}, {x: 700, y: 500, teacupHeight, teacupWidth}, {x: 1000, y: 1800, teacupHeight, teacupWidth}];
+let teacupArray = [{x: 100, y: 600, teacupHeight, teacupWidth}, {x: 400, y: 900, teacupHeight, teacupWidth}, {x: 700, y: 500, teacupHeight, teacupWidth}, {x: 1000, y: 1800, teacupHeight, teacupWidth}];
 
 
 
@@ -40,11 +40,7 @@ function draw(){
     background(bg)
     corgi.draw();
     if(teacupArray.length === 0){
-       teacupArray[0] = {x: 100, y: 600, teacupHeight, teacupWidth};
-       teacupArray[1] = {x: 700, y: 1000, teacupHeight, teacupWidth};
-       teacupArray[2] = {x: 200, y: 900, teacupHeight, teacupWidth};
-       teacupArray[3] = {x: 1050, y: 1500, teacupHeight, teacupWidth};
-       teacupArray[4] = {x: 150, y: 500, teacupHeight, teacupWidth};
+    teacupArray =  [{x: 100, y: 800, teacupHeight, teacupWidth}, {x: 400, y: 900, teacupHeight, teacupWidth}, {x: 700, y: 700, teacupHeight, teacupWidth}, {x: 1000, y: 1800, teacupHeight, teacupWidth}]
     } 
 
 teacupArray.forEach((cup, i )=> {
@@ -53,20 +49,18 @@ teacupArray.forEach((cup, i )=> {
 
       if(cup.y >= 0){
         cup.y += 1
-        //console.log('hii')
     } 
     
     if (cup.y >= 800){
-        //console.log(cup.y, 'am I here')
        cup.y = 0;
     };
 
     // collisions with cuthburt 
 //console.log(cup, '<<<< cheese')
-if((corgi.x + corgi.width >= cup.x && corgi.x <= cup.x + cup.teacupWidth) && 
-(corgi.y + corgi.width >= cup.y && corgi.y <= cup.y + cup.teacupHeight) && (corgi.x + corgi.width + corgi.height >= cup.x && corgi.x + corgi.width + corgi.height >= cup.x + cup.teacupHeight)){
+if(corgi.x + corgi.width >= cup.x && corgi.x <= cup.x + cup.teacupWidth && 
+corgi.y + corgi.width >= cup.y && corgi.y <= cup.y + cup.teacupHeight && corgi.x + corgi.width + corgi.height >= cup.x && corgi.x + corgi.width + corgi.height >= cup.x + cup.teacupHeight){
     
-    teacupArray.splice(i, 1)
+teacupArray.splice(i, 1)
 if(cuthbertLives > 0){
     console.log('oops')
     cuthbertLives--
@@ -85,13 +79,13 @@ if(cuthbertLives > 0){
 
     
     
-    if(keyIsDown(LEFT_ARROW)){
+    if(keyIsDown(LEFT_ARROW) && corgi.x > 0){
    corgi.moveX(-10)
- } else if(keyIsDown(RIGHT_ARROW)){
+ } else if(keyIsDown(RIGHT_ARROW) && corgi.x + corgi.width < 1600){
    corgi.moveX(10)
- } else if(keyIsDown(UP_ARROW)){
+ } else if(keyIsDown(UP_ARROW) && corgi.y > 0){
    corgi.moveY(-10)
- } else if(keyIsDown(DOWN_ARROW)){
+ } else if(keyIsDown(DOWN_ARROW) && corgi.height + corgi.y < 645){
    corgi.moveY(10)
  };
 };
