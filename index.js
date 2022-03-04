@@ -5,7 +5,7 @@ let teacup;
 let teacupImg;
 let teacupHeight = 100;
 let teacupWidth = 100;
-let cuthbertLives = 10;
+let cuthbertLives = 12;
 
 let teacupArray = [
 	{ x: 100, y: 600, teacupHeight, teacupWidth },
@@ -50,6 +50,7 @@ function draw() {
 	}
 
 	teacupArray.forEach((cup, i) => {
+		console.log(cup, "cupzzzzzz");
 		let teacup = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
 		teacup.draw();
 
@@ -61,14 +62,15 @@ function draw() {
 
 		if (cup.y == 520 || cup.y == 521) {
 			cuthbertLives--;
-			score.innerHTML = `lives: ${cuthbertLives}`;
+			score.innerHTML = `Lives: ${cuthbertLives}`;
+
 			if (cuthbertLives === 0) {
 				gameOver();
 			}
+		}
 
-			if (cup.y >= 700) {
-				cup.y = 0;
-			}
+		if (cup.y >= 700) {
+			cup.y = 0;
 		}
 
 		if (
@@ -133,6 +135,8 @@ function gameOver() {
 	splashScreen.style.display = "none";
 	gameScreen.style.display = "none";
 	gameOverScreen.style.display = "flex";
+
+	noLoop();
 }
 
 window.addEventListener("load", () => {
