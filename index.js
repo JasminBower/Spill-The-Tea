@@ -136,26 +136,28 @@ function gameOver() {
 	gameScreen.style.display = "none";
 	gameOverScreen.style.display = "flex";
 
+	cuthbertLives = 11;
+
 	noLoop();
 }
 
 window.addEventListener("load", () => {
-	console.log("in load");
 	splashScreen.style.display = "flex";
 	gameScreen.style.display = "none";
 	gameOverScreen.style.display = "none";
+	noLoop();
 
 	startBtn.addEventListener("click", () => {
-		console.log("am I clicking?");
 		splashScreen.style.display = "none";
 		gameScreen.style.display = "flex";
 		gameOverScreen.style.display = "none";
+		loop();
 	});
 
 	restartBtn.addEventListener("click", () => {
-		console.log("agaiannnnnnnn");
 		splashScreen.style.display = "none";
 		gameScreen.style.display = "flex";
 		gameOverScreen.style.display = "none";
+		loop();
 	});
 });
