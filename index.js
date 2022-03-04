@@ -152,12 +152,6 @@ window.addEventListener("load", () => {
 		gameOverScreen.style.display = "none";
 	});
 
-	gameOverBtn.addEventListener("click", () => {
-		splashScreen.style.display = "none";
-		gameScreen.style.display = "none";
-		gameOverScreen.style.display = "flex";
-	});
-
 	restartBtn.addEventListener("click", () => {
 		console.log("agaiannnnnnnn");
 		splashScreen.style.display = "none";
