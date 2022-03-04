@@ -5,7 +5,8 @@ let teacup;
 let teacupImg;
 let teacupHeight = 100;
 let teacupWidth = 100;
-let cuthbertLives = 5;
+let cuthbertLives = 10;
+let gameOver = false;
 
 
 let teacupArray = [{x: 100, y: 600, teacupHeight, teacupWidth}, {x: 400, y: 900, teacupHeight, teacupWidth}, {x: 700, y: 500, teacupHeight, teacupWidth}, {x: 1000, y: 1800, teacupHeight, teacupWidth}];
@@ -20,6 +21,8 @@ const gameOverScreen = document.querySelector('#game-over-screen');
 const startBtn = document.querySelector('#start-btn');
 const gameOverBtn = document.querySelector('#game-over-btn');
 const restartBtn = document.querySelector('#restart-btn');
+
+let score = document.querySelector('#score')
 
 function preload(){
     bg = loadImage('../images/inside palace.jpeg');
@@ -47,28 +50,34 @@ teacupArray.forEach((cup, i )=> {
     let teacup = new Tea(cup.x, cup.y, teacupHeight, teacupWidth);
     teacup.draw();
 
-      if(cup.y >= 0){
+      if(cup.y >= 0 && cuthbertLives >= 6 ){
         cup.y += 1
-    } 
+    } else if(cup.y >= 0){
+        cup.y += 2
+    }
+
+    if(cup.y == 520 || cup.y == 521 ){
+       cuthbertLives--
+       score.innerHTML = `Score: ${cuthbertLives}`;
+    };
     
-    if (cup.y >= 800){
+    if (cup.y >= 700){
        cup.y = 0;
     };
 
-    // collisions with cuthburt 
-//console.log(cup, '<<<< cheese')
+    if(cuthbertLives === 0){
+    
+    gameOver = true;
+
+};
+
+    
+
 if(corgi.x + corgi.width >= cup.x && corgi.x <= cup.x + cup.teacupWidth && 
 corgi.y + corgi.width >= cup.y && corgi.y <= cup.y + cup.teacupHeight && corgi.x + corgi.width + corgi.height >= cup.x && corgi.x + corgi.width + corgi.height >= cup.x + cup.teacupHeight){
     
 teacupArray.splice(i, 1)
-if(cuthbertLives > 0){
-    console.log('oops')
-    cuthbertLives--
-    console.log(cuthbertLives)
 
-} else console.log('game-over-boo')
-    //let toop = teacupArray.slice(i, 1);
-      ///console.log(toop, 'peep')
 } 
 
 
@@ -79,7 +88,7 @@ if(cuthbertLives > 0){
 
     
     
-    if(keyIsDown(LEFT_ARROW) && corgi.x > 0){
+   if(keyIsDown(LEFT_ARROW) && corgi.x > 0){
    corgi.moveX(-10)
  } else if(keyIsDown(RIGHT_ARROW) && corgi.x + corgi.width < 1600){
    corgi.moveX(10)
@@ -108,7 +117,6 @@ class Dog extends GameObject{
     }
 
     draw(){
-        //console.log(this.width, '<<<<<')
         image(corgiImg, this.x, this.y, this.width, this.height);
     }
       moveX(num){
@@ -128,7 +136,10 @@ class Tea extends GameObject{
     draw(){
        image(teacupImg, this.x, this.y, this.width, this.height);
     };
-}
+};
+// function isGameOver(){
+//  console.log('game-over-boo') 
+// }
 
 
   window.addEventListener('load', () => {
@@ -142,13 +153,20 @@ class Tea extends GameObject{
             gameOverScreen.style.display = 'none';
         });
 
-        gameOverBtn.addEventListener('click', () => {
+
+
+
+        if(gameOver === true){
             console.log('I lost the game boohoo')
             splashScreen.style.display = 'none';
             gameScreen.style.display = 'none';
             gameOverScreen.style.display = 'flex';
 
-        });
+        }
+
+        // gameOverBtn.addEventListener('click', () => {
+         
+        // });
 
         restartBtn.addEventListener('click', () => {
             console.log('agaiannnnnnnn')
