@@ -1,0 +1,16 @@
+body {
+	overflow-x: hidden;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+}
+
+.flex > * {
+	margin: 10px;
+}
