@@ -6,7 +6,6 @@ let teacupImg;
 let teacupHeight = 100;
 let teacupWidth = 100;
 let cuthbertLives = 10;
-let gameOver = false;
 
 let teacupArray = [
 	{ x: 100, y: 600, teacupHeight, teacupWidth },
@@ -36,9 +35,6 @@ function setup() {
 	canvas.parent("game-screen");
 	corgi = new Dog(560, 520, 125, 125);
 	//teacup = new Tea(0, 0, teacupHeight, teacupWidth)
-	if (cuthbertLives === 0) {
-		noLoop();
-	}
 }
 
 function draw() {
